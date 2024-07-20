@@ -36,6 +36,7 @@
 
   .slider_section {
     padding: 75px 0;
+    height: 90vh;
   }
 
   .project_section .filter_box {
@@ -132,6 +133,7 @@
   .slider_section .detail-box h1 {
     font-size: 2rem;
   }
+  
 
   .client_section .box {
     flex-direction: column;
