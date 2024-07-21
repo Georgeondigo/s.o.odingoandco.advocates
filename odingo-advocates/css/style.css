@@ -1,7 +1,7 @@
 body {
   font-family: 'Rubrik', Arial, sans-serif;
   color: #0c0c0c;
-  background-color:  hsl(258, 60%, 98%);;
+  background-color:  hsl(258, 60%, 98%);
   overflow-x: hidden;
 }
 
@@ -102,7 +102,7 @@ a:focus {
 }
 
 .header_section .header_top {
-  padding: 15px 0;
+  padding: 6px 0;
   background-color: #252525;
 }
 
@@ -230,7 +230,8 @@ a:focus {
 
 .header_section .header_bottom {
   background-color: #ffffff;
-  padding: 15px 0;
+  padding: 5px 0;
+  
 }
 
 .header_section .header_bottom .container-fluid {
@@ -239,7 +240,8 @@ a:focus {
 }
 
 .navbar-brand img {
-  width: 135px;
+  width: 175px;
+  padding: 1px;
 }
 
 .custom_nav-container {
@@ -737,6 +739,7 @@ a:focus {
 .client_section .heading_container h2 {
   text-transform: uppercase;
   margin: 0;
+  color: hsl(258, 60%, 98%);;
 }
 
 .client_section .box {
@@ -1138,8 +1141,8 @@ a:focus {
 }
 
 .info_section .info_bottom .info_logo a img {
-  width: 125px;
-  background-color: #ffff;
+  width: 195px;
+  background-color: #ffffff00;
 }
 
 .info_section .info_bottom .social_box {

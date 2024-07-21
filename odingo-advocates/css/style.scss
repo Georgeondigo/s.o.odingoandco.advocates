@@ -5,7 +5,7 @@ $primary2: #252525;
 $textCol: #1f1f1f;
 
 @mixin main-font {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Rubrik', Arial, sans-serif;
 }
 
 
@@ -393,7 +393,7 @@ a:focus {
   flex: 1;
   display: flex;
   align-items: center;
-  background-image: url(../images/slider-bg.jpg);
+  background-image: url(../images/lawimg.jpg);
   background-size: cover;
 
   .dot_design {
@@ -751,7 +751,7 @@ a:focus {
 // client section
 
 .client_section {
-  background-image: url(../images/client-bg.jpg);
+  background-image: url(../images/clent.jpg);
   background-size: cover;
   background-attachment: fixed;
 
