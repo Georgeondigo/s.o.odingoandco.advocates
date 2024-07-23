@@ -14,7 +14,6 @@
 
   <title>S.O.Odingo&Co. Advocates</title>
 
-
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
@@ -31,8 +30,6 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
   <style>
     body {
@@ -104,7 +101,6 @@
             <a class="navbar-brand" href="index.html">
               <img src="images/logolaw6.png" alt="">
             </a>
-            </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class=""> </span>
@@ -122,13 +118,13 @@
                   <a class="nav-link" href="about.html"> About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="appointment.html">Appointment</a>
+                  <a class="nav-link" href="appointment.html">Consultation</a>
                 </li>
-                
+
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
-                
+
               </ul>
               <div class="quote_btn-container">
                 <a href="appointment.html" class="quote_btn">
@@ -143,149 +139,95 @@
     <!-- end header section -->
   </div>
 
-
-  <!-- contact section -->
-  <section class="contact_section layout_padding">
-    <div class="container-fluid">
-      <div class="col-lg-4 col-md-5 offset-md-1">
-        <div class="heading_container">
-          <h2>
-            Contact Us
-          </h2>
-        </div>
+  <section class="appointment_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Book an Appointment</h2>
+        <p>
+          Schedule a consultation with our legal experts.
+        </p>
+        <p> Fill out the form below to book an appointment at your convenience. Our team will get in touch with you to confirm the details.</p>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-5 offset-md-1">
-          <div class="form_container">
-            <form id="contact-form">
-              <div>
-                <input type="text" name="name" placeholder="Your Name" required />
-              </div>
-              <div>
-                <input type="text" name="phone" placeholder="Phone Number" required />
-              </div>
-              <div>
-                <input type="email" name="email" placeholder="Email" required />
-              </div>
-              <div>
-                <input id="message" name="message" placeholder="Message" required class="message-box/>
-              </div>
-              <div class="btn_box">
-                <button type="submit">SEND</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-lg-7 col-md-6 px-0">
-          <div class="map_container">
-            <div class="map">
-              <div id="googleMap"></div>
+        <div class="col-md-12">
+          <form id="appointment-form" class="appointment_form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
             </div>
-          </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Select Service</label>
+              <select id="service" name="service" class="form-control" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="civil_matters">Civil Matters</option>
+                <option value="criminal_matters">Criminal Matters</option>
+                <option value="conveyancing">Conveyancing</option>
+                <option value="employment_law">Employment Law</option>
+                <option value="commercial_law">Commercial Law</option>
+                <option value="probate_administration">Probate and Administration</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="preferred_date">Preferred Date</label>
+              <input type="date" id="preferred_date" name="preferred_date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Additional Information</label>
+              <textarea id="message" name="message" class="form-control" rows="4" placeholder="Provide any additional details or questions" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
         </div>
       </div>
     </div>
   </section>
-  <!-- end contact section -->
 
-  <!-- info section -->
-  <section class="info_section ">
+  <!-- JavaScript -->
+  <script>
+  document.getElementById('appointment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    <div class="container">
-      <div class="contact_nav">
-        <a href="">
-          <i class="fa fa-phone" aria-hidden="true"></i>
-          <span>
-            Call : +254 0723282185
-          </span>
-        </a>
-        <a href="">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          <span>
-            Email : soodingoadvocates@gmail.com
-          </span>
-        </a>
-        <a href="">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <span>
-            Location : Notio Building Next to river migori bridge
-          </span>
-        </a>
-      </div>
+    // Collect form data
+    const formData = {
+      name: this.name.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      service: this.service.value,
+      preferred_date: this.preferred_date.value,
+      message: this.message.value
+    };
 
-      <div class="info_top ">
-        <div class="row info_main_row">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="info_links">
-              <h4>
-                QUICK LINKS
-              </h4>
-              <div class="info_links_menu">
-                <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="" href="service.html">Services</a>
-                <a class="" href="about.html"> About</a>
-                <a class="" href="appointment.html">Consultation</a>
-                <a class="" href="testimonial.html">Testimonial</a>
-                <a class="" href="contact.html">Contact Us</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
-            <div class="info_post">
-              <h6>
-                Opening Hours
-              </h6>
-              <h6>Monday - Friday 9am - 5pm</h6>
-             
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="info_form">
-              <h4>
-                SIGN UP TO OUR NEWSLETTER
-              </h4>
-              <form action="">
-                <input type="text" placeholder="Enter Your Email" />
-                <button type="submit">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="info_bottom">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="info_logo">
-              <a href="">
-                <img src="images/logolawwhite.png" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4 ml-auto">
-            <div class="social_box">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
+    // Log the request details
+    console.log('Request Details:', {
+      method: 'POST',
+      url: 'http://localhost:3000/send-appointment',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
 
-      </div>
-    </div>
-  </section>
-  <!-- end info_section -->
-
+    // Send the request
+    fetch('http://localhost:3000/send-appointment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => alert('Appointment request sent successfully!'))
+    .catch(error => alert('Failed to send appointment request.'));
+  });
+</script>
 
   <!-- footer section -->
   <footer class="footer_section">
@@ -316,44 +258,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
-
-
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-  
-      // Collect form data
-      const formData = {
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value,
-        message: this.message.value
-      };
-  
-      // Log the request details
-      console.log('Request Details:', {
-        method: 'POST',
-        url: 'http://localhost:3000/send-email',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-  
-      // Send the request
-      fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => alert('Message sent successfully!'))
-      .catch(error => alert('Failed to send message.'));
-    });
-  </script>
-  
 
 </body>
 

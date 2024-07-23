@@ -10,7 +10,7 @@ getYear();
 
 
 // owl carousel slider js
-var owl = $('.project_carousel').owlCarousel({
+var owl = $('.appointment_carousel').owlCarousel({
     loop: false,
     margin: 15,
     center: true,

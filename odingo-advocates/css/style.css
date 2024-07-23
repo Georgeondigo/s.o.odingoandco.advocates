@@ -409,7 +409,7 @@ a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-image: url(../images/lawimg.jpg);
+  background-image: url(../images/lawimg2.jpg);
   background-size: cover;
   width: 100%;
   height: 80vh;
@@ -1193,3 +1193,129 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+/*** Team ***/
+.team-item img {
+  transition: .5s;
+}
+
+.team-item:hover img {
+  transform: scale(1.1);
+}
+
+.team-item .team-social {
+  position: absolute;
+  width: 38px;
+  top: 50%;
+  left: -38px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.team-item .team-social .btn {
+  color: #f07b26;
+  background: #FFFFFF;
+}
+
+.team-item .team-social .btn:hover {
+  color: #FFFFFF;
+  background: #f07b26;
+}
+
+.team-item:hover .team-social {
+  left: 0;
+  right: 0;
+}
+
+/* Civil Matters section styles */
+
+.service_detail_section {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.service_detail_section .heading_container {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.service_detail_section .heading_container h2 {
+  font-size: 2.5em;
+  color: #333;
+  font-weight: 600;
+}
+
+.service_detail_section .detail_container .img-box {
+  text-align: center;
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.service_detail_section .detail_container .img-box img {
+  max-width: 80%;
+  border-radius: 10px;
+}
+
+.service_detail_section .detail_container .detail-box {
+  padding: 20px;
+}
+
+.service_detail_section .detail_container .detail-box h4 {
+  font-size: 1.75em;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service_detail_section .detail_container .detail-box p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.service_detail_section .detail_container .detail-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.service_detail_section .detail_container .detail-box ul li {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.service_detail_section .detail_container .detail-box ul li:before {
+  content: "\2022";
+  color: #f07b26;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.service_detail_section .detail_container .detail-box ul li strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.service_detail_section .detail_container .detail-box a.btn {
+  background-color: #f07b26;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.service_detail_section .detail_container .detail-box a.btn:hover {
+  background-color: #bc570d;
+}

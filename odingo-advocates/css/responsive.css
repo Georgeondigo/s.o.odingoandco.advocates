@@ -39,17 +39,17 @@
     height: 90vh;
   }
 
-  .project_section .filter_box {
+  .appointment_section .filter_box {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .project_section .filter_box .owl-filter-bar {
+  .appointment_section .filter_box .owl-filter-bar {
     margin-left: 0;
     margin-top: 10px;
   }
 
-  .project_section .filter_box .owl-filter-bar a {
+  .appointment_section .filter_box .owl-filter-bar a {
     padding: 10px;
     display: inline-block;
   }
@@ -60,7 +60,7 @@
     margin-top: 45px;
   }
 
-  .project_section .box .detail-box {
+  .appointment_section .box .detail-box {
     opacity: 1;
     visibility: visible;
   }
@@ -124,7 +124,7 @@
 
   }
 
-  .project_section .project_carousel {
+  .appointment_section .appointment_carousel {
     padding: 0;
   }
 }
