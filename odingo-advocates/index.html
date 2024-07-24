@@ -38,6 +38,10 @@
     body {
       font-family: 'Rubik', sans-serif;
     }
+    .spinner {
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 
 </head>
@@ -450,12 +454,13 @@
       <div class="heading_container">
         <h2>Book an Appointment</h2>
         <p>
-          Schedule a consultation with our legal experts. Fill out the form below to book an appointment at your convenience. Our team will get in touch with you to confirm the details.
+          Schedule a consultation with our legal experts.
         </p>
+        <p> Fill out the form below to book an appointment at your convenience. Our team will get in touch with you to confirm the details.</p>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form action="#" method="post" class="appointment_form">
+          <form id="appointment-form" class="appointment_form">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
@@ -488,8 +493,11 @@
               <label for="message">Additional Information</label>
               <textarea id="message" name="message" class="form-control" rows="4" placeholder="Provide any additional details or questions" required></textarea>
             </div>
-            <button type="submit" class="btn">Book Appointment</button>
+            <button type="submit" class="btn">Submit</button>
           </form>
+          <div id="spinner" class="spinner" style="display: none;">
+            <i class="fa fa-spinner fa-spin" style="font-size: 24px;"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -672,7 +680,7 @@
 
 
    <!-- contact section -->
-   <section class="contact_section layout_padding">
+  <section class="contact_section layout_padding">
     <div class="container-fluid">
       <div class="col-lg-4 col-md-5 offset-md-1">
         <div class="heading_container">
@@ -701,6 +709,9 @@
                 <button type="submit">SEND</button>
               </div>
             </form>
+            <div id="spinner" class="spinner" style="display: none;">
+              <i class="fa fa-spinner fa-spin" style="font-size: 24px;"></i>
+            </div>
           </div>
         </div>
         <div class="col-lg-7 col-md-6 px-0">
@@ -846,40 +857,75 @@
 
 
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Function to handle form submission
+      function handleFormSubmit(event) {
+        event.preventDefault();
   
-      // Collect form data
-      const formData = {
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value,
-        message: this.message.value
-      };
+        // Show the spinner
+        document.getElementById('spinner').style.display = 'block';
   
-      // Log the request details
-      console.log('Request Details:', {
-        method: 'POST',
-        url: 'https://s-o-odingoandco-advocates.onrender.com/send-email',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+        // Determine which form was submitted
+        const form = event.target;
+        const formId = form.id;
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => {
+          jsonData[key] = value;
+        });
   
-      // Send the request
-      fetch('https://s-o-odingoandco-advocates.onrender.com/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => alert('Message sent successfully!'))
-      .catch(error => alert('Failed to send message.'));
+        // Set the URL based on the form ID
+        let url;
+        let successMessage;
+        let failureMessage;
+        
+        if (formId === 'appointment-form') {
+          url = 'https://s-o-odingoandco-advocates.onrender.com/send-appointment';
+          successMessage = 'Appointment request sent successfully!';
+          failureMessage = 'Failed to send appointment request.';
+        } else if (formId === 'contact-form') {
+          url = 'https://s-o-odingoandco-advocates.onrender.com/send-email';
+          successMessage = 'Message sent successfully!';
+          failureMessage = 'Failed to send message.';
+        }
+  
+        // Log the request details
+        console.log('Request Details:', {
+          method: 'POST',
+          url: url,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(jsonData)
+        });
+  
+        // Send the request
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(jsonData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Hide the spinner
+          document.getElementById('spinner').style.display = 'none';
+          alert(successMessage);
+        })
+        .catch(error => {
+          // Hide the spinner
+          document.getElementById('spinner').style.display = 'none';
+          alert(failureMessage);
+        });
+      }
+  
+      // Add event listeners to both forms
+      document.getElementById('contact-form').addEventListener('submit', handleFormSubmit);
+      document.getElementById('appointment-form').addEventListener('submit', handleFormSubmit);
     });
   </script>
+  
   
 </body>
 

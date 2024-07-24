@@ -56,7 +56,7 @@
             </a>
             <div class="dropdown-menu ">
               <a href="#" class="dropdown-item">
-                <img src="images/flag-france.png" class="" alt="flag">
+                <img src="images/flag-france.webp" class="" alt="flag">
               </a>
             </div>
             <span>
@@ -103,7 +103,7 @@
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
-              <img src="images/logolaw6.png" alt="">
+              <img src="images/logolaw6.webp" alt="">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,6 +202,9 @@
   document.getElementById('appointment-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    // Show the spinner
+    document.getElementById('spinner').style.display = 'block';
+
     // Collect form data
     const formData = {
       name: this.name.value,
@@ -231,8 +234,16 @@
       body: JSON.stringify(formData)
     })
     .then(response => response.json())
-    .then(data => alert('Appointment request sent successfully!'))
-    .catch(error => alert('Failed to send appointment request.'));
+    .then(data => {
+        // Hide the spinner
+        document.getElementById('spinner').style.display = 'none';
+        alert('Appointment request sent successfully!');
+      })
+      .catch(error => {
+        // Hide the spinner
+        document.getElementById('spinner').style.display = 'none';
+        alert('Failed to send appointment request.');
+      });
   });
 </script>
 
