@@ -14,7 +14,6 @@
 
   <title>S.O.Odingo&Co. Advocates</title>
 
-
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
@@ -38,6 +37,10 @@
     body {
       font-family: 'Rubik', sans-serif;
     }
+    .spinner {
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 
 </head>
@@ -45,7 +48,7 @@
 <body class="sub_page">
 
   <div class="hero_area">
-    <!-- header section strats -->
+    <!-- header section starts -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
@@ -78,7 +81,7 @@
             <a href="">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
-                Location :  Notio Building, Next to river migori bridge,  Migori
+                Location : Notio Building, Next to river migori bridge, Migori
               </span>
             </a>
           </div>
@@ -104,12 +107,9 @@
             <a class="navbar-brand" href="index.html">
               <img src="images/logolaw6.png" alt="">
             </a>
-            </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class=""> </span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
@@ -124,11 +124,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="appointment.html">Appointment</a>
                 </li>
-                
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
-                
               </ul>
               <div class="quote_btn-container">
                 <a href="appointment.html" class="quote_btn">
@@ -142,7 +140,6 @@
     </header>
     <!-- end header section -->
   </div>
-
 
   <!-- contact section -->
   <section class="contact_section layout_padding">
@@ -174,6 +171,9 @@
                 <button type="submit">SEND</button>
               </div>
             </form>
+            <div id="spinner" class="spinner" style="display: none;">
+              <i class="fa fa-spinner fa-spin" style="font-size: 24px;"></i>
+            </div>
           </div>
         </div>
         <div class="col-lg-7 col-md-6 px-0">
@@ -190,7 +190,6 @@
 
   <!-- info section -->
   <section class="info_section ">
-
     <div class="container">
       <div class="contact_nav">
         <a href="">
@@ -212,7 +211,6 @@
           </span>
         </a>
       </div>
-
       <div class="info_top ">
         <div class="row info_main_row">
           <div class="col-sm-6 col-md-4 col-lg-3">
@@ -236,7 +234,6 @@
                 Opening Hours
               </h6>
               <h6>Monday - Friday 9am - 5pm</h6>
-             
             </div>
           </div>
           <div class="col-md-4">
@@ -262,25 +259,6 @@
                 <img src="images/logolawwhite.png" alt="">
               </a>
             </div>
-          </div>
-          <div class="col-md-4 ml-auto">
-            <div class="social_box">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -322,6 +300,9 @@
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
   
+      // Show the spinner
+      document.getElementById('spinner').style.display = 'block';
+      
       // Collect form data
       const formData = {
         name: this.name.value,
@@ -330,6 +311,18 @@
         message: this.message.value
       };
   
+  
+      // Log the request details
+      console.log('Request Details:', {
+        method: 'POST',
+        url: 'http://localhost:3000/send-email',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      
       // Log the request details
       console.log('Request Details:', {
         method: 'POST',
@@ -349,12 +342,18 @@
         body: JSON.stringify(formData)
       })
       .then(response => response.json())
-      .then(data => alert('Message sent successfully!'))
-      .catch(error => alert('Failed to send message.'));
+      .then(data => {
+        // Hide the spinner
+        document.getElementById('spinner').style.display = 'none';
+        alert('Message sent successfully!');
+      })
+      .catch(error => {
+        // Hide the spinner
+        document.getElementById('spinner').style.display = 'none';
+        alert('Failed to send message.');
+      });
     });
   </script>
-  
-
 </body>
 
 </html>
